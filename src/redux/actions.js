@@ -1,14 +1,21 @@
-const ADD_TODO = 'ADD_TODO';
-const REMOVE_TODO = 'REMOVE_TODO';
+const ADD = 'ADD';
+const TOGGLE = 'TOGGLE';
+const REMOVE = 'REMOVE';
 
 const addTodo = () => {
   return {
-    type: ADD_TODO
+    type: ADD
+  }
+}
+
+const toggleTodo = () => {
+  return {
+    type: TOGGLE
   }
 }
 
 const removeTodo = () => {
   return {
-    type: REMOVE_TODO
+    type: REMOVE
   }
 }

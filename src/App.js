@@ -1,8 +1,10 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import TodoTemplate from './components/TodoTemplate';
-import TodoHead from './components/TodoHead';
+import TodoHeader from './components/TodoHeader';
 import TodoList from './components/TodoList';
+import { Provider } from 'react-redux'
+import store from './redux/store'
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -11,17 +13,15 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 
-
 function App() {
   return (
-    <>
+    <Provider store={store}>
       <GlobalStyle />
       <TodoTemplate>
-        <TodoHead />
+        <TodoHeader />
         <TodoList />
       </TodoTemplate>
-      
-    </>
+    </Provider>
   );
 }
 

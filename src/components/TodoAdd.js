@@ -1,6 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
 import { RiAddFill } from 'react-icons/ri';
+import { addTodo } from '../redux/actions';
+import { connect } from 'react-redux';
 
 const TodoInputBlock = styled.div`
   display: flex;
@@ -39,15 +41,20 @@ const TodoInputButton = styled.button`
   }
 `;
 
-function TodoAdd() {
+function TodoAdd(props) {
   return (
     <TodoInputBlock>
       <TodoInputGetData 
         autoFocus 
         placeholder="할 일을 입력하세요. "/>
-      <TodoInputButton><RiAddFill /> </TodoInputButton>
+      <TodoInputButton onClick={()=> props.addTodo()}><RiAddFill /> </TodoInputButton>
     </TodoInputBlock>
   );
 }
 
-export default TodoAdd;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addTodo: ()=> dispatch(addTodo())
+  }
+}
+export default connect(mapDispatchToProps)(TodoAdd);

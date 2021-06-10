@@ -1,27 +1,40 @@
-const ADD_TODO = 'ADD_TODO';
-const REMOVE_TODO = 'REMOVE_TODO';
+const ADD = 'ADD';
+const TOGGLE = 'TOGGLE';
+const REMOVE = 'REMOVE';
 
-const initialState = {
-  todos: [
-    {
-      id: 1,
-      text: '첫번째 할 일',
-      done: true
-    },
-  ]
-}
+const initialState = [
+  {
+    id: 1,
+    text: '프로젝트 생성하기',
+    done: true
+  },
+  {
+    id: 2,
+    text: '컴포넌트 스타일링하기',
+    done: true
+  },
+  {
+    id: 3,
+    text: 'Context 만들기',
+    done: false
+  },
+  {
+    id: 4,
+    text: '기능 구현하기',
+    done: false
+  }
+]
 
 const todoReducer = (state=initialState, action)=>{
   switch(action.type){
-    case ADD_TODO:
-      return {
-        ...state,
-        todos: [...state.todos, action.todo]
-      }
-    case REMOVE_TODO:
-      return {
-
-      }
+    case ADD:
+      return state.concat(action.todo);
+    case TOGGLE:
+      return state.map(todo =>
+        todo.id === action.id ? { ...todo, done: !todo.done } : todo
+      );
+    case REMOVE:
+      return state.filter(todo => todo.id !== action.id);
     default:
       return state
   }
