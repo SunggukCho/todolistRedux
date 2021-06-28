@@ -5,12 +5,12 @@ const REMOVE = 'REMOVE';
 const initialState = [
   {
     id: 1,
-    text: '프로젝트 생성하기',
+    text: '프로젝트 생성',
     done: true
   },
   {
     id: 2,
-    text: '컴포넌트 스타일링하기',
+    text: '컴포넌트 스타일링',
     done: true
   },
   {
